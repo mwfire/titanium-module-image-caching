@@ -26,7 +26,7 @@ TODO:
  * @private
  * @type String
  */
-var imageDirectory = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory + 'images' + Ti.Filesystem.separator);
+var imageDirectory = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory + Ti.Filesystem.separator + 'images' + Ti.Filesystem.separator);
 
 /**
  * The writable application directory
@@ -86,7 +86,7 @@ if(!cacheDirectory.exists()) {
  */
 function getAssetImage(imageFile) {
     if(!imageFile) return false;
-    var file = Ti.Filesystem.getFile(imageDirectory + imageFile);
+    var file = Ti.Filesystem.getFile(imageDirectory.resolve(), imageFile);
     if(file.exists()) {
         return file;
     } else {
@@ -105,7 +105,7 @@ function getAssetImage(imageFile) {
  */
 function getCachedImage(imageFile) {
     if(!imageFile) return false;
-    var file = Ti.Filesystem.getFile(cacheDirectory + imageFile);
+    var file = Ti.Filesystem.getFile(cacheDirectory.resolve(), imageFile);
     if(file.exists()) {
         return file;
     } else {
@@ -123,7 +123,7 @@ function getCachedImage(imageFile) {
  */
 function deleteCachedImage(filename) {
     if(!imageFile) return false;
-    var file = Ti.Filesystem.getFile(imageDirectory + imageFile);
+    var file = Ti.Filesystem.getFile(imageDirectory, imageFile);
     if(file.exists()) {
         return file.deleteFile();
     } else {
@@ -152,7 +152,7 @@ function getRemoteImage(filename, url, callback) {
             onload: function(e) {
                 if(this.responseData) {
                     try {
-                        var file = Ti.Filesystem.getFile(cacheDirectory + filename);
+                        var file = Ti.Filesystem.getFile(cacheDirectory.resolve(), filename);
                         file.write(this.responseData);
                         if(Ti.Platform.name === 'iPhone OS') file.setRemoteBackup(false);
                         if(cb) return cb({ success: true, file: this.responseData });
