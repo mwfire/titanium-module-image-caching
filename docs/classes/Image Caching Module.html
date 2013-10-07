@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.1</em>
+            <em>API Docs for: 0.2</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -90,7 +90,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/mwfire-image-caching.js.html#l1"><code>mwfire-image-caching.js:1</code></a>
+            Defined in: <a href="../files/module_mwfire-image-caching.js.html#l1"><code>module&#x2F;mwfire-image-caching.js:1</code></a>
         </div>
     
 
@@ -111,6 +111,7 @@
 </ul>
 <p>TODO:</p>
 <ul>
+<li>Handle identical filenames!!!</li>
 <li>check for valid filenames / types</li>
 <li>check device storage capabilities</li>
 <li>Android compatabilty tests</li>
@@ -144,6 +145,13 @@
 
                     <ul class="index-list methods">
                         
+                            <li class="index-item method public">
+                                <a href="#method_createImageView">createImageView</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method private">
                                 <a href="#method_deleteCachedImage">deleteCachedImage</a>
 
@@ -174,6 +182,20 @@
                         
                             <li class="index-item method public">
                                 <a href="#method_loadImage">loadImage</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#method_parseUri">parseUri</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#method_splitUri">splitUri</a>
 
                                 
                                 
@@ -238,6 +260,116 @@
                 <h2 class="off-left">Methods</h2>
 
                 
+                    <div id="method_createImageView" class="method item public">
+    <h3 class="name"><code>createImageView</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>viewOptions</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Ti.UI.imageView</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/module_mwfire-image-caching.js.html#l329"><code>module&#x2F;mwfire-image-caching.js:329</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Wraps a Ti.UI.imageView and attaches
+our imageHandling</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">viewOptions</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>Ti.UI.imageView options</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Ti.UI.imageView</span>:
+                    
+                    <p>The ImageView</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_deleteCachedImage" class="method item private">
     <h3 class="name"><code>deleteCachedImage</code></h3>
 
@@ -286,7 +418,7 @@
             
         
         
-        <a href="../files/mwfire-image-caching.js.html#l116"><code>mwfire-image-caching.js:116</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l116"><code>module&#x2F;mwfire-image-caching.js:116</code></a>
         
         </p>
 
@@ -395,7 +527,7 @@
             
         
         
-        <a href="../files/mwfire-image-caching.js.html#l97"><code>mwfire-image-caching.js:97</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l97"><code>module&#x2F;mwfire-image-caching.js:97</code></a>
         
         </p>
 
@@ -513,7 +645,7 @@ in the cache, returns the file or false if not</p>
             
         
         
-        <a href="../files/mwfire-image-caching.js.html#l134"><code>mwfire-image-caching.js:134</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l134"><code>module&#x2F;mwfire-image-caching.js:134</code></a>
         
         </p>
 
@@ -649,7 +781,7 @@ and saves it to the filesystem</p>
             
         
         
-        <a href="../files/mwfire-image-caching.js.html#l177"><code>mwfire-image-caching.js:177</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l177"><code>module&#x2F;mwfire-image-caching.js:177</code></a>
         
         </p>
 
@@ -784,7 +916,7 @@ and saves it to the filesystem</p>
             
         
         
-        <a href="../files/mwfire-image-caching.js.html#l213"><code>mwfire-image-caching.js:213</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l272"><code>module&#x2F;mwfire-image-caching.js:272</code></a>
         
         </p>
 
@@ -795,8 +927,8 @@ and saves it to the filesystem</p>
     </div>
 
     <div class="description">
-        <p>Loads an image either via url or cache
-checks for newer available versions</p>
+        <p>Loads an image either via url or cache;
+checks if newer versions available</p>
 
     </div>
 
@@ -864,6 +996,226 @@ checks for newer available versions</p>
 </div>
 
                 
+                    <div id="method_parseUri" class="method item private">
+    <h3 class="name"><code>parseUri</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>str</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/module_mwfire-image-caching.js.html#l234"><code>module&#x2F;mwfire-image-caching.js:234</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Parses a uri and returns it components, oldie but goldie ;)
+parseUri 1.2.2
+(c) Steven Levithan, stevenlevithan.com
+MIT License</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">str</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>Uri components</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_splitUri" class="method item private">
+    <h3 class="name"><code>splitUri</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>imageUrl</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/module_mwfire-image-caching.js.html#l213"><code>module&#x2F;mwfire-image-caching.js:213</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Splits an url to return basePath and filename
+using parseUri</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">imageUrl</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Object</span>:
+                    
+                    <p>imagePath and imageFile</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
             </div>
         
 
@@ -897,7 +1249,7 @@ checks for newer available versions</p>
             
         
         
-        <a href="../files/mwfire-image-caching.js.html#l31"><code>mwfire-image-caching.js:31</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l31"><code>module&#x2F;mwfire-image-caching.js:31</code></a>
         
         </p>
 
@@ -944,7 +1296,7 @@ checks for newer available versions</p>
             
         
         
-        <a href="../files/mwfire-image-caching.js.html#l39"><code>mwfire-image-caching.js:39</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l39"><code>module&#x2F;mwfire-image-caching.js:39</code></a>
         
         </p>
 
@@ -991,7 +1343,7 @@ checks for newer available versions</p>
             
         
         
-        <a href="../files/mwfire-image-caching.js.html#l62"><code>mwfire-image-caching.js:62</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l62"><code>module&#x2F;mwfire-image-caching.js:62</code></a>
         
         </p>
 
@@ -1038,7 +1390,7 @@ checks for newer available versions</p>
             
         
         
-        <a href="../files/mwfire-image-caching.js.html#l47"><code>mwfire-image-caching.js:47</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l47"><code>module&#x2F;mwfire-image-caching.js:47</code></a>
         
         </p>
 
@@ -1085,7 +1437,7 @@ checks for newer available versions</p>
             
         
         
-        <a href="../files/mwfire-image-caching.js.html#l23"><code>mwfire-image-caching.js:23</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l23"><code>module&#x2F;mwfire-image-caching.js:23</code></a>
         
         </p>
 

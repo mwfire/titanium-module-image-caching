@@ -15,17 +15,20 @@ To access this module, you would do the following:
 
     var imageCaching = require('/lib/mwfire-image-caching');
     
+
 ##Usage
 
-    // Create an imageView and add it to your window
-    var imageView = Ti.UI.createImageView({
+    // Create an imageView with this module and add it to your window
+    // The image caching will be handled for you
+    var imageView = imageCaching.createImageView({
         width: 200,
         height: 200,
-        backgroundColor: '#CCC'
+        backgroundColor: '#CCC',
+        image: 'http://www.yourdomain/yourimage.png'
     });
     win.add(imageView);
 
-    // Load image and add it to the imageView
+    // You can also manually load an image with this module
     imageCaching.loadImage('yourimage.jpg', 'http://yourdomain/', function(response) {
         if(response && response.success) {
             imageView.image = response.file;
@@ -33,7 +36,7 @@ To access this module, you would do the following:
     });
     
 ##Platform
-With version 0.1, this has only been tested on iOS<br>
+With version 0.2, this has only been tested on iOS<br>
 This might also run seamlessly on Android devices,<br>
 but it is untested.
 

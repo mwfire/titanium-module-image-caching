@@ -9,15 +9,15 @@ This module handles image caching by
 
 TODO:
 
+* Handle identical filenames!!!
 * check for valid filenames / types
 * check device storage capabilities
 * Android compatabilty tests
 
-
 @class Image Caching Module
 @company mwfire web development
 @author Martin Wildfeuer
-@version 0.1
+@version 0.2
 */
 
 /**
@@ -144,7 +144,7 @@ function deleteCachedImage(filename) {
 function getRemoteImage(filename, url, callback) {
     var cb = (callback && typeof(callback) === 'function') ? callback : false;
     if(!filename || !url){
-        if(cb) return cb({ success: false });
+        if(cb) return cb({ success: false, error: errorMessages[1] });
     }
 
     if (Titanium.Network.online) {
@@ -211,8 +211,67 @@ function getRemoteLastModified(filename, url, callback) {
 }
 
 /**
- * Loads an image either via url or cache
- * checks for newer available versions
+ * Splits an url to return basePath and filename
+ * using parseUri
+ *
+ * @method splitUri
+ * @private
+ * @param {String} imageUrl
+ * @return {Object} imagePath and imageFile
+ */
+function splitUri(imageUrl) {
+    var parsedPath = parseUri(imageUrl);
+    if(!parsedPath.protocol.length) parsedPath.protocol = 'http';
+    var path = parsedPath.protocol + '://' + parsedPath.host + parsedPath.directory;
+    var file = parsedPath.file;
+
+    return {
+        imagePath: path,
+        imageFile: file
+    };
+};
+
+/**
+ * Parses a uri and returns it components, oldie but goldie ;)
+ * parseUri 1.2.2
+ * (c) Steven Levithan, stevenlevithan.com
+ * MIT License
+ *
+ * @method parseUri
+ * @private
+ * @param {String} str
+ * @return {Object} Uri components
+ */
+function parseUri(str) {
+    var o = {
+            strictMode: false,
+            key: ["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],
+            q:   {
+                name:   "queryKey",
+                parser: /(?:^|&)([^&=]*)=?([^&]*)/g
+            },
+            parser: {
+                strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
+                loose:  /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/
+            }
+        },
+        m   = o.parser[o.strictMode ? "strict" : "loose"].exec(str),
+        uri = {},
+        i   = 14;
+
+    while (i--) uri[o.key[i]] = m[i] || "";
+
+    uri[o.q.name] = {};
+    uri[o.key[12]].replace(o.q.parser, function ($0, $1, $2) {
+        if ($1) uri[o.q.name][$1] = $2;
+    });
+
+    return uri;
+};
+
+/**
+ * Loads an image either via url or cache;
+ * checks if newer versions available
  *
  * @method loadImage
  * @public
@@ -264,4 +323,41 @@ exports.loadImage = function(filename, url, callback) {
             }
         });
     }
+};
+
+
+/**
+ * Wraps a Ti.UI.imageView and attaches
+ * our imageHandling
+ *
+ * @method createImageView
+ * @public
+ * @param {Object} viewOptions Ti.UI.imageView options
+ * @return {Ti.UI.imageView} The ImageView
+ */
+exports.createImageView = function(viewOptions) {
+    var path, filename;
+
+    // Split path and remove it from options
+    if(viewOptions.image) {
+        // Split path and filename and remove image from options
+        var parsedPath = splitUri(viewOptions.image);
+        path = parsedPath.imagePath;
+        filename = parsedPath.imageFile;
+        delete viewOptions['image'];
+    };
+
+    // Create a simple imageView
+    var imageView = Ti.UI.createImageView(viewOptions);
+
+    // If we have path and filename, init our imageLoading
+    if(path && filename) {
+        this.loadImage(filename, path, function(response) {
+            if(response && response.success) {
+                imageView.image = response.file;
+            }
+        });
+    };
+
+    return imageView;
 };

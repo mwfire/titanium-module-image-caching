@@ -1,13 +1,13 @@
 {
     "project": {
         "name": "Titanium Image Caching Module",
-        "description": "Handels image caching in Titanium",
-        "version": "0.1",
+        "description": "Handles image caching in Titanium",
+        "version": "0.2",
         "url": "http://mwfire.de"
     },
     "files": {
-        "mwfire-image-caching.js": {
-            "name": "mwfire-image-caching.js",
+        "module/mwfire-image-caching.js": {
+            "name": "module/mwfire-image-caching.js",
             "modules": {},
             "classes": {
                 "Image Caching Module": 1
@@ -26,17 +26,17 @@
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 1,
-            "description": "##Titanium Image Caching Module\n\nThis module handles image caching by\n\n* checking whether a image with the given name already exists in cache\n* if yes, it checks if there is a newer remote version available\n* if not it downloads the image to the cache and returns it\n\nTODO:\n\n* check for valid filenames / types\n* check device storage capabilities\n* Android compatabilty tests",
+            "description": "##Titanium Image Caching Module\n\nThis module handles image caching by\n\n* checking whether a image with the given name already exists in cache\n* if yes, it checks if there is a newer remote version available\n* if not it downloads the image to the cache and returns it\n\nTODO:\n\n* Handle identical filenames!!!\n* check for valid filenames / types\n* check device storage capabilities\n* Android compatabilty tests",
             "company": "mwfire web development",
             "author": "Martin Wildfeuer",
-            "version": "0.1"
+            "version": "0.2"
         }
     },
     "classitems": [
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 23,
             "description": "Path to the image folder in assets, assumes \"images\" as folder name",
             "itemtype": "property",
@@ -47,7 +47,7 @@
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 31,
             "description": "The writable application directory",
             "itemtype": "property",
@@ -58,7 +58,7 @@
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 39,
             "description": "The custom cache directory",
             "itemtype": "property",
@@ -69,7 +69,7 @@
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 47,
             "description": "Error messages",
             "itemtype": "property",
@@ -80,7 +80,7 @@
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 62,
             "description": "Turns debug messages on or off",
             "itemtype": "property",
@@ -91,13 +91,13 @@
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 70,
             "description": "Create cache directory if it not exists",
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 80,
             "description": "Checks if an image with the given filename exists\nin the assets, returns the file or false if not",
             "params": [
@@ -114,7 +114,7 @@
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 97,
             "description": "Checks if an image with the given filename exists\nin the cache, returns the file or false if not",
             "itemtype": "method",
@@ -135,7 +135,7 @@
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 116,
             "description": "Deletes an image from the cache",
             "itemtype": "method",
@@ -156,7 +156,7 @@
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 134,
             "description": "Sends a GET request to download the image\nand saves it to the filesystem",
             "itemtype": "method",
@@ -183,7 +183,7 @@
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 177,
             "description": "Sends a HEAD request and checks for Last-Modified",
             "itemtype": "method",
@@ -210,9 +210,51 @@
             "class": "Image Caching Module"
         },
         {
-            "file": "mwfire-image-caching.js",
+            "file": "module/mwfire-image-caching.js",
             "line": 213,
-            "description": "Loads an image either via url or cache\nchecks for newer available versions",
+            "description": "Splits an url to return basePath and filename\nusing parseUri",
+            "itemtype": "method",
+            "name": "splitUri",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "imageUrl",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "imagePath and imageFile",
+                "type": "Object"
+            },
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "module/mwfire-image-caching.js",
+            "line": 234,
+            "description": "Parses a uri and returns it components, oldie but goldie ;)\nparseUri 1.2.2\n(c) Steven Levithan, stevenlevithan.com\nMIT License",
+            "itemtype": "method",
+            "name": "parseUri",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Uri components",
+                "type": "Object"
+            },
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "module/mwfire-image-caching.js",
+            "line": 272,
+            "description": "Loads an image either via url or cache;\nchecks if newer versions available",
             "itemtype": "method",
             "name": "loadImage",
             "access": "public",
@@ -235,24 +277,45 @@
                 }
             ],
             "class": "Image Caching Module"
+        },
+        {
+            "file": "module/mwfire-image-caching.js",
+            "line": 329,
+            "description": "Wraps a Ti.UI.imageView and attaches\nour imageHandling",
+            "itemtype": "method",
+            "name": "createImageView",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "viewOptions",
+                    "description": "Ti.UI.imageView options",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The ImageView",
+                "type": "Ti.UI.imageView"
+            },
+            "class": "Image Caching Module"
         }
     ],
     "warnings": [
         {
             "message": "unknown tag: company",
-            "line": " mwfire-image-caching.js:1"
+            "line": " module/mwfire-image-caching.js:1"
         },
         {
             "message": "unknown tag: version",
-            "line": " mwfire-image-caching.js:1"
+            "line": " module/mwfire-image-caching.js:1"
         },
         {
             "message": "Missing item type\nCreate cache directory if it not exists",
-            "line": " mwfire-image-caching.js:70"
+            "line": " module/mwfire-image-caching.js:70"
         },
         {
             "message": "Missing item type\nChecks if an image with the given filename exists\nin the assets, returns the file or false if not",
-            "line": " mwfire-image-caching.js:80"
+            "line": " module/mwfire-image-caching.js:80"
         }
     ]
 }
