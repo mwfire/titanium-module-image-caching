@@ -1,0 +1,258 @@
+{
+    "project": {
+        "name": "Titanium Image Caching Module",
+        "description": "Handels image caching in Titanium",
+        "version": "0.1",
+        "url": "http://mwfire.de"
+    },
+    "files": {
+        "mwfire-image-caching.js": {
+            "name": "mwfire-image-caching.js",
+            "modules": {},
+            "classes": {
+                "Image Caching Module": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Image Caching Module": {
+            "name": "Image Caching Module",
+            "shortname": "Image Caching Module",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "mwfire-image-caching.js",
+            "line": 1,
+            "description": "##Titanium Image Caching Module\n\nThis module handles image caching by\n\n* checking whether a image with the given name already exists in cache\n* if yes, it checks if there is a newer remote version available\n* if not it downloads the image to the cache and returns it\n\nTODO:\n\n* check for valid filenames / types\n* check device storage capabilities\n* Android compatabilty tests",
+            "company": "mwfire web development",
+            "author": "Martin Wildfeuer",
+            "version": "0.1"
+        }
+    },
+    "classitems": [
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 23,
+            "description": "Path to the image folder in assets, assumes \"images\" as folder name",
+            "itemtype": "property",
+            "name": "imageDirectory",
+            "access": "private",
+            "tagname": "",
+            "type": "String",
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 31,
+            "description": "The writable application directory",
+            "itemtype": "property",
+            "name": "applicationDataDirectory",
+            "access": "private",
+            "tagname": "",
+            "type": "String",
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 39,
+            "description": "The custom cache directory",
+            "itemtype": "property",
+            "name": "cacheDirectory",
+            "access": "private",
+            "tagname": "",
+            "type": "String",
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 47,
+            "description": "Error messages",
+            "itemtype": "property",
+            "name": "errorMessages",
+            "access": "private",
+            "tagname": "",
+            "type": "Array",
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 62,
+            "description": "Turns debug messages on or off",
+            "itemtype": "property",
+            "name": "debug",
+            "access": "private",
+            "tagname": "",
+            "type": "bool",
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 70,
+            "description": "Create cache directory if it not exists",
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 80,
+            "description": "Checks if an image with the given filename exists\nin the assets, returns the file or false if not",
+            "params": [
+                {
+                    "name": "imageFile",
+                    "description": "The filename of the image",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "file / boolean",
+                "type": "Mixed"
+            },
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 97,
+            "description": "Checks if an image with the given filename exists\nin the cache, returns the file or false if not",
+            "itemtype": "method",
+            "name": "getCachedImage",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "imageFile",
+                    "description": "The filename of the image",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "file / boolean",
+                "type": "Mixed"
+            },
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 116,
+            "description": "Deletes an image from the cache",
+            "itemtype": "method",
+            "name": "deleteCachedImage",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "The filename of the image",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Success",
+                "type": "Bool"
+            },
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 134,
+            "description": "Sends a GET request to download the image\nand saves it to the filesystem",
+            "itemtype": "method",
+            "name": "getRemoteImage",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "The name of the file",
+                    "type": "Object"
+                },
+                {
+                    "name": "url",
+                    "description": "The remote url with slashes",
+                    "type": "Object"
+                },
+                {
+                    "name": "callback",
+                    "description": "Called on any response",
+                    "type": "Object"
+                }
+            ],
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 177,
+            "description": "Sends a HEAD request and checks for Last-Modified",
+            "itemtype": "method",
+            "name": "getRemoteLastModified",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "The name of the file",
+                    "type": "Object"
+                },
+                {
+                    "name": "url",
+                    "description": "The remote url with slashes",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "Called on any response",
+                    "type": "Object"
+                }
+            ],
+            "class": "Image Caching Module"
+        },
+        {
+            "file": "mwfire-image-caching.js",
+            "line": 213,
+            "description": "Loads an image either via url or cache\nchecks for newer available versions",
+            "itemtype": "method",
+            "name": "loadImage",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "filename",
+                    "description": "The name of the file",
+                    "type": "Object"
+                },
+                {
+                    "name": "url",
+                    "description": "The remote url with slashes",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "Called on any response",
+                    "type": "Object"
+                }
+            ],
+            "class": "Image Caching Module"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: company",
+            "line": " mwfire-image-caching.js:1"
+        },
+        {
+            "message": "unknown tag: version",
+            "line": " mwfire-image-caching.js:1"
+        },
+        {
+            "message": "Missing item type\nCreate cache directory if it not exists",
+            "line": " mwfire-image-caching.js:70"
+        },
+        {
+            "message": "Missing item type\nChecks if an image with the given filename exists\nin the assets, returns the file or false if not",
+            "line": " mwfire-image-caching.js:80"
+        }
+    ]
+}
