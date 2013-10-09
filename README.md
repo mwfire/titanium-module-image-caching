@@ -24,7 +24,7 @@ To access this module, you would do the following:
         width: 200,
         height: 200,
         backgroundColor: '#CCC',
-        image: /Users/mwfire/Dropbox/Work/TitaniumModules/mwfire-image-caching/README.md'http://www.yourdomain/yourimage.png'
+        image: 'http://www.yourdomain/yourimage.png'
     });
     win.add(imageView);
 
