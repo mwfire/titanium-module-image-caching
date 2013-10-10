@@ -6,7 +6,7 @@ This module is designed to handle image caching for you
 @class ImageCachingModule
 @company mwfire web development
 @author Martin Wildfeuer
-@version 0.3
+@version 0.5
 
 TODO:
 
