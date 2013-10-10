@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Image Caching Module - Titanium Image Caching Module</title>
+    <title>ImageCachingModule - Titanium Image Caching Module</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -19,7 +19,7 @@
             
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: 0.2</em>
+            <em>API Docs for: 0.3</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -41,7 +41,7 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/Image Caching Module.html">Image Caching Module</a></li>
+                <li><a href="../classes/ImageCachingModule.html">ImageCachingModule</a></li>
             
             </ul>
 
@@ -82,7 +82,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Image Caching Module Class</h1>
+                        <h1>ImageCachingModule Class</h1>
 <div class="box meta">
     
 
@@ -103,19 +103,7 @@
 
 <div class="box intro">
     <h2>Titanium Image Caching Module</h2>
-<p>This module handles image caching by</p>
-<ul>
-<li>checking whether a image with the given name already exists in cache</li>
-<li>if yes, it checks if there is a newer remote version available</li>
-<li>if not it downloads the image to the cache and returns it</li>
-</ul>
-<p>TODO:</p>
-<ul>
-<li>Handle identical filenames!!!</li>
-<li>check for valid filenames / types</li>
-<li>check device storage capabilities</li>
-<li>Android compatabilty tests</li>
-</ul>
+<p>This module is designed to handle image caching for you</p>
 
 </div>
 
@@ -145,6 +133,20 @@
 
                     <ul class="index-list methods">
                         
+                            <li class="index-item method private">
+                                <a href="#method_base64Encode">base64Encode</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#method_checkAvailableStorage">checkAvailableStorage</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method public">
                                 <a href="#method_createImageView">createImageView</a>
 
@@ -152,7 +154,14 @@
                                 
                             </li>
                         
-                            <li class="index-item method private">
+                            <li class="index-item method public">
+                                <a href="#method_deleteCache">deleteCache</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method public">
                                 <a href="#method_deleteCachedImage">deleteCachedImage</a>
 
                                 
@@ -161,6 +170,13 @@
                         
                             <li class="index-item method private">
                                 <a href="#method_getCachedImage">getCachedImage</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#method_getMinutesDiff">getMinutesDiff</a>
 
                                 
                                 
@@ -201,6 +217,13 @@
                                 
                             </li>
                         
+                            <li class="index-item method private">
+                                <a href="#method_validateImageUrl">validateImageUrl</a>
+
+                                
+                                
+                            </li>
+                        
                     </ul>
                 </div>
             
@@ -212,14 +235,14 @@
                     <ul class="index-list properties">
                         
                             <li class="index-item property private">
-                                <a href="#property_applicationDataDirectory">applicationDataDirectory</a>
+                                <a href="#property_APP_DATA_DIR">APP_DATA_DIR</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item property private">
-                                <a href="#property_cacheDirectory">cacheDirectory</a>
+                                <a href="#property_CACHE_DIR">CACHE_DIR</a>
 
                                 
                                 
@@ -239,13 +262,6 @@
                                 
                             </li>
                         
-                            <li class="index-item property private">
-                                <a href="#property_imageDirectory">imageDirectory</a>
-
-                                
-                                
-                            </li>
-                        
                     </ul>
                 </div>
             
@@ -258,6 +274,223 @@
         
             <div id="methods" class="api-class-tabpanel">
                 <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_base64Encode" class="method item private">
+    <h3 class="name"><code>base64Encode</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>theString</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/module_mwfire-image-caching.js.html#l355"><code>module&#x2F;mwfire-image-caching.js:355</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns a base64 encoded string</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">theString</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The string to encode</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">String</span>:
+                    
+                    <p>Base64 encoded String</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_checkAvailableStorage" class="method item private">
+    <h3 class="name"><code>checkAvailableStorage</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>theFile</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/module_mwfire-image-caching.js.html#l242"><code>module&#x2F;mwfire-image-caching.js:242</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks if enough space left to store image</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">theFile</code>
+                        <span class="type">Ti.Filesystem.File</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                    <p>Enough space available or not</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
 
                 
                     <div id="method_createImageView" class="method item public">
@@ -308,7 +541,7 @@
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l329"><code>module&#x2F;mwfire-image-caching.js:329</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l476"><code>module&#x2F;mwfire-image-caching.js:476</code></a>
         
         </p>
 
@@ -370,33 +603,19 @@ our imageHandling</p>
 </div>
 
                 
-                    <div id="method_deleteCachedImage" class="method item private">
-    <h3 class="name"><code>deleteCachedImage</code></h3>
+                    <div id="method_deleteCache" class="method item public">
+    <h3 class="name"><code>deleteCache</code></h3>
 
     
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>filename</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">Bool</span>
-        </span>
+        <span class="paren">()</span>
     
 
     
 
     
-        <span class="flag private">private</span>
+
+    
+        <span class="flag public">public</span>
     
 
     
@@ -418,7 +637,78 @@ our imageHandling</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l116"><code>module&#x2F;mwfire-image-caching.js:116</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l134"><code>module&#x2F;mwfire-image-caching.js:134</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Deletes all cached images</p>
+
+    </div>
+
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_deleteCachedImage" class="method item public">
+    <h3 class="name"><code>deleteCachedImage</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>url</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/module_mwfire-image-caching.js.html#l100"><code>module&#x2F;mwfire-image-caching.js:100</code></a>
         
         </p>
 
@@ -441,14 +731,14 @@ our imageHandling</p>
             
                 <li class="param">
                     
-                        <code class="param-name">filename</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">url</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The filename of the image</p>
+                        <p>The url of the remote image</p>
 
                     </div>
 
@@ -469,6 +759,8 @@ our imageHandling</p>
                         <span class="type">Bool</span>:
                     
                     <p>Success</p>
+<p>TODO: check if this was the last file in this path
+and delete the complete folder if true</p>
 
                 
             </div>
@@ -485,6 +777,12 @@ our imageHandling</p>
     
         <div class="args">
             <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>imagePath</code>
+                    
+                </li>
             
                 <li class="arg">
                     
@@ -527,7 +825,7 @@ our imageHandling</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l97"><code>module&#x2F;mwfire-image-caching.js:97</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l73"><code>module&#x2F;mwfire-image-caching.js:73</code></a>
         
         </p>
 
@@ -548,6 +846,22 @@ in the cache, returns the file or false if not</p>
             <h4>Parameters:</h4>
 
             <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">imagePath</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The remote url of the image</p>
+
+                    </div>
+
+                    
+                </li>
             
                 <li class="param">
                     
@@ -579,6 +893,135 @@ in the cache, returns the file or false if not</p>
                         <span class="type">Mixed</span>:
                     
                     <p>file / boolean</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_getMinutesDiff" class="method item private">
+    <h3 class="name"><code>getMinutesDiff</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>earlierDate</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>laterDate</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Int</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/module_mwfire-image-caching.js.html#l259"><code>module&#x2F;mwfire-image-caching.js:259</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Returns the difference between two dates in minutes</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">earlierDate</code>
+                        <span class="type">Date</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">laterDate</code>
+                        <span class="type">Date</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Int</span>:
+                    
+                    <p>Difference in hours</p>
 
                 
             </div>
@@ -645,7 +1088,7 @@ in the cache, returns the file or false if not</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l134"><code>module&#x2F;mwfire-image-caching.js:134</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l155"><code>module&#x2F;mwfire-image-caching.js:155</code></a>
         
         </p>
 
@@ -740,7 +1183,7 @@ and saves it to the filesystem</p>
             
                 <li class="arg">
                     
-                        <code>url</code>
+                        <code>path</code>
                     
                 </li>
             
@@ -781,7 +1224,7 @@ and saves it to the filesystem</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l177"><code>module&#x2F;mwfire-image-caching.js:177</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l205"><code>module&#x2F;mwfire-image-caching.js:205</code></a>
         
         </p>
 
@@ -820,7 +1263,7 @@ and saves it to the filesystem</p>
             
                 <li class="param">
                     
-                        <code class="param-name">url</code>
+                        <code class="param-name">path</code>
                         <span class="type">String</span>
                     
 
@@ -869,13 +1312,13 @@ and saves it to the filesystem</p>
             
                 <li class="arg">
                     
-                        <code>filename</code>
+                        <code>url</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>url</code>
+                        <code>options</code>
                     
                 </li>
             
@@ -889,6 +1332,10 @@ and saves it to the filesystem</p>
         </div>
     
 
+    
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
     
 
     
@@ -916,7 +1363,7 @@ and saves it to the filesystem</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l272"><code>module&#x2F;mwfire-image-caching.js:272</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l368"><code>module&#x2F;mwfire-image-caching.js:368</code></a>
         
         </p>
 
@@ -940,14 +1387,14 @@ checks if newer versions available</p>
             
                 <li class="param">
                     
-                        <code class="param-name">filename</code>
-                        <span class="type">Object</span>
+                        <code class="param-name">url</code>
+                        <span class="type">String</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The name of the file</p>
+                        <p>The remote url of the image</p>
 
                     </div>
 
@@ -956,14 +1403,14 @@ checks if newer versions available</p>
             
                 <li class="param">
                     
-                        <code class="param-name">url</code>
-                        <span class="type">String</span>
+                        <code class="param-name">options</code>
+                        <span class="type">Object</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>The remote url with slashes</p>
+                        <p>Options checkRemote &amp; checkInterval</p>
 
                     </div>
 
@@ -990,6 +1437,18 @@ checks if newer versions available</p>
         </div>
     
 
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Void</span>:
+                    
+                
+            </div>
+        </div>
     
 
     
@@ -1044,7 +1503,7 @@ checks if newer versions available</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l234"><code>module&#x2F;mwfire-image-caching.js:234</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l297"><code>module&#x2F;mwfire-image-caching.js:297</code></a>
         
         </p>
 
@@ -1155,7 +1614,7 @@ MIT License</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l213"><code>module&#x2F;mwfire-image-caching.js:213</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l275"><code>module&#x2F;mwfire-image-caching.js:275</code></a>
         
         </p>
 
@@ -1216,6 +1675,115 @@ using parseUri</p>
 </div>
 
                 
+                    <div id="method_validateImageUrl" class="method item private">
+    <h3 class="name"><code>validateImageUrl</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>imagePath</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Bool</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/module_mwfire-image-caching.js.html#l336"><code>module&#x2F;mwfire-image-caching.js:336</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks if path and filename are valid</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">imagePath</code>
+                        <span class="type">String</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>The url to test</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Bool</span>:
+                    
+                    <p>imagePath valid or not</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
             </div>
         
 
@@ -1224,8 +1792,8 @@ using parseUri</p>
                 <h2 class="off-left">Properties</h2>
 
                 
-                    <div id="property_applicationDataDirectory" class="property item private">
-    <h3 class="name"><code>applicationDataDirectory</code></h3>
+                    <div id="property_APP_DATA_DIR" class="property item private">
+    <h3 class="name"><code>APP_DATA_DIR</code></h3>
     <span class="type">String</span>
 
     
@@ -1249,7 +1817,7 @@ using parseUri</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l31"><code>module&#x2F;mwfire-image-caching.js:31</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l18"><code>module&#x2F;mwfire-image-caching.js:18</code></a>
         
         </p>
 
@@ -1259,7 +1827,7 @@ using parseUri</p>
     </div>
 
     <div class="description">
-        <p>The writable application directory</p>
+        <p>Writable application directory</p>
 
     </div>
 
@@ -1271,8 +1839,8 @@ using parseUri</p>
 </div>
 
                 
-                    <div id="property_cacheDirectory" class="property item private">
-    <h3 class="name"><code>cacheDirectory</code></h3>
+                    <div id="property_CACHE_DIR" class="property item private">
+    <h3 class="name"><code>CACHE_DIR</code></h3>
     <span class="type">String</span>
 
     
@@ -1296,7 +1864,7 @@ using parseUri</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l39"><code>module&#x2F;mwfire-image-caching.js:39</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l27"><code>module&#x2F;mwfire-image-caching.js:27</code></a>
         
         </p>
 
@@ -1306,7 +1874,7 @@ using parseUri</p>
     </div>
 
     <div class="description">
-        <p>The custom cache directory</p>
+        <p>Custom cache directory</p>
 
     </div>
 
@@ -1343,7 +1911,7 @@ using parseUri</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l62"><code>module&#x2F;mwfire-image-caching.js:62</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l53"><code>module&#x2F;mwfire-image-caching.js:53</code></a>
         
         </p>
 
@@ -1390,7 +1958,7 @@ using parseUri</p>
             
         
         
-        <a href="../files/module_mwfire-image-caching.js.html#l47"><code>module&#x2F;mwfire-image-caching.js:47</code></a>
+        <a href="../files/module_mwfire-image-caching.js.html#l36"><code>module&#x2F;mwfire-image-caching.js:36</code></a>
         
         </p>
 
@@ -1401,53 +1969,6 @@ using parseUri</p>
 
     <div class="description">
         <p>Error messages</p>
-
-    </div>
-
-    
-
-    
-
-    
-</div>
-
-                
-                    <div id="property_imageDirectory" class="property item private">
-    <h3 class="name"><code>imageDirectory</code></h3>
-    <span class="type">String</span>
-
-    
-
-    
-        <span class="flag private">private</span>
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/module_mwfire-image-caching.js.html#l23"><code>module&#x2F;mwfire-image-caching.js:23</code></a>
-        
-        </p>
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Path to the image folder in assets, assumes &quot;images&quot; as folder name</p>
 
     </div>
 
