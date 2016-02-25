@@ -3,6 +3,9 @@
 ##Description
 This module is designed to help you handling remote images. You can either use the wrapper of Ti.UI.ImageView, or handle image caching manually with the methods provided in this module
 
+##Please note:
+I am not actively maintaining Titanium plugins at the moment. Titanium has evolved a lot since my initial versions and best practices have changed a lot, to the better, I have to say. So, although these plugins should do the job, feel free to send me pull requests! I would be more than happy to see these plugins as modules :)
+
 ##Installation
 Just add `mwfire-image-caching.js` to your current projects `lib` folder. Create the folder as a child of Resources if it does not exist yet.
 
